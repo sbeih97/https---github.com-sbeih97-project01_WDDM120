@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        header {
+            background-color: #4285f4;
+            color: #fff;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #e0e0e0;
+            padding: 10px;
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        section, aside {
+            flex-basis: 45%;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #4285f4;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Meta</h1>
+    </header>
+
+    <nav>
+        <a href="https://www.facebook.com/">Facebook</a>
+        <a href="https://www.instagram.com/">Instagram</a>
+        <a href="https://web.whatsapp.com/">Whatsapp</a>
+    </nav>
+
+    <main>
+        <section id="main-content">
+            <img src="/download.jpg">
+            <p>Meta, formerly known as Facebook, is a technology conglomerate led by CEO Mark Zuckerberg. Renowned for its social media origins, Meta has evolved into a global leader in the development of virtual reality (VR) and augmented reality (AR) technologies. The company envisions a future where people connect and collaborate seamlessly in the digital realm. Meta continues to invest heavily in innovative technologies, positioning itself as a major player in shaping the next generation of online experiences.</p>
+        </section>
+
+        <aside id="sidebar">
+            <h2>Apps owned by Meta</h2>
+            <ul>
+                <li onclick="changeMainContent('New Content 1')">Facebook</li>
+                <li onclick="changeMainContent('New Content 2')">Instagram</li>
+                <li onclick="changeMainContent('New Content 3')">Whatsapp</li>
+            </ul>
+            <button onclick="changeColorScheme()">Change Color Scheme</button>
+            <button onclick="addItemToSidebar()">Add Item</button>
+            <button onclick="removeItemFromSidebar()">Remove Item</button>
+        </aside>
+    </main>
+
+    <footer>
+        Ahmad Sbeih
+    </footer>
+
+    <script>
+        // DOM Manipulation Functions
+
+        function changeMainContent(newContent) {
+            document.getElementById('main-content').innerHTML = '<h2>Main Content Section</h2><p>' + newContent + '</p>';
+        }
+
+        function changeColorScheme() {
+            document.body.style.backgroundColor = getRandomColor();
+            document.body.style.color = getRandomColor();
+        }
+
+        function addItemToSidebar() {
+            var newItem = prompt('Enter the new item:');
+            if (newItem) {
+                var sidebarList = document.getElementById('sidebar').querySelector('ul');
+                var listItem = document.createElement('li');
+                listItem.innerText = newItem;
+                listItem.onclick = function() {
+                    changeMainContent('New Content for ' + newItem);
+                };
+                sidebarList.appendChild(listItem);
+            }
+        }
+
+        function removeItemFromSidebar() {
+            var sidebarList = document.getElementById('sidebar').querySelector('ul');
+            if (sidebarList.children.length > 0) {
+                sidebarList.removeChild(sidebarList.lastElementChild);
+            }
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Event Handling
+        document.querySelector('header').addEventListener('mouseover', function() {
+         alert('Hi Ana!');
+        });
+    </script>
+
+</body>
+</html>
